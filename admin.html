@@ -1,23 +1,201 @@
 <!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>پنل مدیریت | قرارگاه رسانه‌ای</title><style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');*{box-sizing:border-box}body{margin:0;background:#07111b;color:#eef4f8;font-family:Vazirmatn,Tahoma;line-height:1.8}.wrap{max-width:1050px;margin:auto;padding:24px 15px}.box{background:#0d1b29;border:1px solid #284258;border-radius:18px;padding:22px;margin:16px 0}h1,h2{margin-top:0}label{display:block;margin:12px 0 6px}input,textarea,select{width:100%;padding:11px;border-radius:10px;border:1px solid #38536a;background:#07111b;color:#fff;font:inherit}textarea{min-height:120px;resize:vertical}.btn{border:0;border-radius:10px;padding:10px 16px;background:#d8b85d;color:#111;font-weight:800;cursor:pointer;margin:7px 4px 0 0}.danger{background:#c94c4c;color:white}.secondary{background:#24445d;color:white}.muted{color:#9eafbd;font-size:13px}.hidden{display:none}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.item{border:1px solid #294256;border-radius:14px;padding:15px;margin:12px 0}.item img,.item video{max-width:300px;max-height:190px;display:block;margin-top:10px;border-radius:8px;background:#000}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pill{padding:4px 9px;border-radius:999px;background:#16324a;font-size:12px}.on{background:#164b36}.off{background:#4a2d2d}a{color:#9fd3ff}.msg{padding:10px;border-radius:10px;margin-top:10px;background:#102437;color:#c7d8e6}.error{background:#482525;color:#ffd1d1}.preview{max-width:260px;max-height:180px;border-radius:10px;margin-top:10px}@media(max-width:700px){.grid{grid-template-columns:1fr}.item img,.item video{max-width:100%}}</style></head><body><div class="wrap">
 <div id="login" class="box"><h1>ورود مدیر</h1><p class="muted">برای مدیریت اخبار و رسانه‌ها با ایمیل مدیر و رمز عبور وارد شوید.</p><label>ایمیل مدیر</label><input id="email" type="email" autocomplete="username" placeholder="admin@example.com"><label>رمز عبور</label><input id="password" type="password" autocomplete="current-password" placeholder="رمز عبور"><button class="btn" id="loginBtn">ورود</button><div id="loginMsg"></div></div>
 <div id="app" class="hidden"><div class="box"><div class="row" style="justify-content:space-between"><div><h1>پنل مدیریت محتوا</h1><p class="muted">مدیریت دائمی اطلاعیه‌ها، عکس‌ها و ویدئوها</p></div><div><a class="btn secondary" href="index.html">مشاهده سایت</a><button class="btn danger" id="logoutBtn">خروج</button></div></div></div>
+
+<div class="box"><h2>افرادی که می‌توانند بیان</h2><p class="muted">این متن زیر بخش «برنامه‌های هفتگی» در سایت نمایش داده می‌شود.</p><label>متن</label><textarea id="weeklyPeople" placeholder="مثلاً اعضای پایگاه و افراد علاقه‌مند می‌توانند در سانس سالن هفتگی شرکت کنند."></textarea><button class="btn" id="saveWeeklyPeople">ذخیره متن</button><div id="weeklyMsg"></div></div>
+
 <div class="box"><h2 id="formTitle">افزودن اطلاعیه</h2><div class="grid"><div><label>عنوان</label><input id="title" placeholder="مثلاً اطلاعیه برنامه هفته آینده"></div><div><label>دسته‌بندی</label><select id="category"><option>اطلاعیه</option><option>خبر</option><option>گزارش</option><option>برنامه</option></select></div></div><label>متن</label><textarea id="body" placeholder="متن اطلاعیه یا خبر..."></textarea><label>عکس یا ویدئو (اختیاری)</label><input id="media" type="file" accept="image/*,video/mp4,video/webm,video/ogg"><div id="oldMedia"></div><label><input id="published" type="checkbox" checked style="width:auto"> انتشار در سایت</label><button class="btn" id="saveBtn">ثبت اطلاعیه</button><button class="btn secondary hidden" id="cancelBtn">لغو ویرایش</button><div id="formMsg"></div></div>
+<div class="box">
+<h2 id="reportFormTitle">افزودن گزارش تصویری</h2>
+<p class="muted">برای هر گزارش می‌توانی عنوان/موضوع، عکس، ویدئو یا هر دو را ثبت کنی.</p>
+<label>موضوع / عنوان گزارش</label>
+<input id="reportTitle" placeholder="مثلاً گزارش تصویری سانس سالن هفتگی">
+<label>توضیحات گزارش (اختیاری)</label>
+<textarea id="reportBody" placeholder="توضیح کوتاه درباره برنامه یا فعالیت..."></textarea>
+<div class="grid">
+<div><label>عکس‌های گزارش (اختیاری؛ چند عکس را همزمان انتخاب کن)</label><input id="reportImage" type="file" accept="image/*" multiple></div>
+<div><label>ویدئوی گزارش (اختیاری)</label><input id="reportVideo" type="file" accept="video/mp4,video/webm,video/ogg"></div>
+</div>
+<label><input id="reportPublished" type="checkbox" checked style="width:auto"> انتشار در سایت</label>
+<div id="oldReportMedia"></div>
+<button class="btn" id="saveReportBtn">ثبت گزارش تصویری</button>
+<button class="btn secondary hidden" id="cancelReportBtn">لغو ویرایش</button>
+<div id="reportFormMsg"></div>
+</div>
+<div class="box"><h2>گزارش‌های تصویری ثبت‌شده</h2><div id="reportsAdminList"><p class="muted">در حال دریافت...</p></div></div>
 <div class="box"><h2>مطالب ثبت‌شده</h2><div id="list"><p class="muted">در حال دریافت...</p></div></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script>
-let client,editing=null,currentPosts=[];
-const $=id=>document.getElementById(id);function msg(el,text,error=false){el.innerHTML=text?`<div class="msg ${error?'error':''}">${text}</div>`:''}
+let client,editing=null,currentPosts=[],editingReport=null,currentReports=[];
+const $=id=>document.getElementById(id);
+function msg(el,text,error=false){el.innerHTML=text?`<div class="msg ${error?'error':''}">${text}</div>`:''}
 function configured(){return window.SUPABASE_CONFIG&&!SUPABASE_CONFIG.url.includes('YOUR-PROJECT')&&!SUPABASE_CONFIG.anonKey.includes('YOUR_')}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 async function boot(){if(!configured()){msg($('loginMsg'),'ابتدا config.js را با URL و anon key پروژه Supabase تنظیم کنید.',true);$('loginBtn').disabled=true;return}client=supabase.createClient(SUPABASE_CONFIG.url,SUPABASE_CONFIG.anonKey);const {data:{session}}=await client.auth.getSession();if(session){showApp()}else{showLogin()}client.auth.onAuthStateChange((_e,s)=>s?showApp():showLogin())}
-function showLogin(){$('login').classList.remove('hidden');$('app').classList.add('hidden')}async function showApp(){$('login').classList.add('hidden');$('app').classList.remove('hidden');await loadPosts()}
+function showLogin(){$('login').classList.remove('hidden');$('app').classList.add('hidden')}
+async function showApp(){$('login').classList.add('hidden');$('app').classList.remove('hidden');await loadWeeklyPeople();await loadPosts();await loadReportsAdmin()}
 $('loginBtn').onclick=async()=>{msg($('loginMsg'),'');const {error}=await client.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)msg($('loginMsg'),'ورود ناموفق بود. ایمیل، رمز و ثبت کاربر مدیر را بررسی کنید.',true)};
 $('logoutBtn').onclick=()=>client.auth.signOut();
+
+async function loadWeeklyPeople(){
+ const {data,error}=await client.from('site_settings').select('value').eq('key','weekly_people').maybeSingle();
+ if(error){msg($('weeklyMsg'),'خطا در دریافت متن: '+esc(error.message),true);return}
+ $('weeklyPeople').value=data?.value||'';
+}
+$('saveWeeklyPeople').onclick=async()=>{
+ try{
+  $('saveWeeklyPeople').disabled=true;msg($('weeklyMsg'),'در حال ذخیره...');
+  const value=$('weeklyPeople').value.trim();
+  const {error}=await client.from('site_settings').upsert({key:'weekly_people',value,updated_at:new Date().toISOString()},{onConflict:'key'});
+  if(error)throw error;
+  msg($('weeklyMsg'),'متن با موفقیت ذخیره شد.');
+ }catch(e){msg($('weeklyMsg'),esc(e.message||'خطا در ذخیره'),true)}
+ finally{$('saveWeeklyPeople').disabled=false}
+};
+
+
+async function loadReportsAdmin(){
+ const {data,error}=await client.from('reports').select('*').order('created_at',{ascending:false});
+ if(error){msg($('reportsAdminList'),'خطا در دریافت گزارش‌ها: '+esc(error.message),true);return}
+ currentReports=data||[];
+ renderReportsAdmin();
+}
+function renderReportsAdmin(){
+ if(!currentReports.length){$('reportsAdminList').innerHTML='<p class="muted">هنوز گزارش تصویری ثبت نشده است.</p>';return}
+ $('reportsAdminList').innerHTML=currentReports.map(r=>`
+ <div class="item">
+  <div class="row">
+   <span class="pill ${r.published?'on':'off'}">${r.published?'منتشر شده':'مخفی'}</span>
+   <span class="muted">${new Date(r.created_at).toLocaleDateString('fa-IR')}</span>
+  </div>
+  <h3>${esc(r.title)}</h3>
+  ${r.body?`<p>${esc(r.body).replace(/\n/g,'<br>')}</p>`:''}
+  ${(Array.isArray(r.image_urls)?r.image_urls:(r.image_url?[r.image_url]:[])).map(u=>`<img src="${esc(u)}" alt="" class="preview">`).join('')}
+  ${r.video_url?`<video controls src="${esc(r.video_url)}" class="preview"></video>`:''}
+  <div class="row">
+   <button class="btn" onclick="editReport(${r.id})">ویرایش</button>
+   <button class="btn secondary" onclick="toggleReportPublish(${r.id},${r.published})">${r.published?'مخفی کردن':'انتشار'}</button>
+   <button class="btn danger" onclick="deleteReport(${r.id})">حذف</button>
+  </div>
+ </div>`).join('');
+}
+function editReport(id){
+ const r=currentReports.find(x=>x.id===id); if(!r)return;
+ editingReport=r.id;
+ $('reportFormTitle').textContent='ویرایش گزارش تصویری';
+ $('reportTitle').value=r.title||'';
+ $('reportBody').value=r.body||'';
+ $('reportPublished').checked=!!r.published;
+ $('reportImage').value='';
+ $('reportVideo').value='';
+ $('oldReportMedia').innerHTML=
+   ((Array.isArray(r.image_urls)?r.image_urls:(r.image_url?[r.image_url]:[])).length?`<p class="muted">عکس‌های فعلی:</p>`+(Array.isArray(r.image_urls)?r.image_urls:(r.image_url?[r.image_url]:[])).map(u=>`<img class="preview" src="${esc(u)}">`).join(''):'')+
+   (r.video_url?`<p class="muted">ویدئوی فعلی:</p><video class="preview" controls src="${esc(r.video_url)}"></video>`:'');
+ $('cancelReportBtn').classList.remove('hidden');
+ $('saveReportBtn').textContent='ذخیره تغییرات';
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function resetReportForm(){
+ editingReport=null;
+ $('reportFormTitle').textContent='افزودن گزارش تصویری';
+ $('reportTitle').value='';
+ $('reportBody').value='';
+ $('reportImage').value='';
+ $('reportVideo').value='';
+ $('reportPublished').checked=true;
+ $('oldReportMedia').innerHTML='';
+ $('cancelReportBtn').classList.add('hidden');
+ $('saveReportBtn').textContent='ثبت گزارش تصویری';
+ msg($('reportFormMsg'),'');
+}
+$('cancelReportBtn').onclick=resetReportForm;
+
+function storagePathFromUrl(url){
+ const marker='/storage/v1/object/public/media/';
+ const i=(url||'').indexOf(marker);
+ return i>=0 ? url.slice(i+marker.length) : null;
+}
+async function removeMediaUrl(url){
+ const path=storagePathFromUrl(url);
+ if(path){try{await client.storage.from('media').remove([path])}catch(e){}}
+}
+
+$('saveReportBtn').onclick=async()=>{
+ try{
+  $('saveReportBtn').disabled=true;
+  msg($('reportFormMsg'),'در حال ذخیره...');
+  const title=$('reportTitle').value.trim();
+  const body=$('reportBody').value.trim();
+  const imageFiles=Array.from($('reportImage').files||[]);
+  const videoFile=$('reportVideo').files[0];
+  if(!title)throw new Error('موضوع یا عنوان گزارش را وارد کنید.');
+  if(!imageFiles.length && !videoFile && !editingReport)throw new Error('حداقل یک عکس یا ویدئو برای گزارش انتخاب کنید.');
+
+  const payload={
+   title, body,
+   published:$('reportPublished').checked,
+   updated_at:new Date().toISOString()
+  };
+
+  const old=currentReports.find(x=>x.id===editingReport);
+
+  if(imageFiles.length){
+   const uploaded=[];
+   for(const file of imageFiles){
+    const m=await upload(file);
+    uploaded.push(m.url);
+   }
+   payload.image_urls=uploaded;
+  }
+  if(videoFile){
+   const m=await upload(videoFile);
+   payload.video_url=m.url;
+  }
+
+  if(editingReport){
+   const {error}=await client.from('reports').update(payload).eq('id',editingReport);
+   if(error)throw error;
+   if(imageFiles.length){
+    const oldImages=Array.isArray(old?.image_urls)?old.image_urls:(old?.image_url?[old.image_url]:[]);
+    for(const url of oldImages)await removeMediaUrl(url);
+   }
+   if(videoFile && old?.video_url)await removeMediaUrl(old.video_url);
+  }else{
+   const {error}=await client.from('reports').insert(payload);
+   if(error)throw error;
+  }
+
+  resetReportForm();
+  await loadReportsAdmin();
+  msg($('reportFormMsg'),'گزارش تصویری با موفقیت ذخیره شد.');
+ }catch(e){
+  msg($('reportFormMsg'),esc(e.message||'خطا در ذخیره گزارش'),true);
+ }finally{
+  $('saveReportBtn').disabled=false;
+ }
+};
+
+async function toggleReportPublish(id,state){
+ const {error}=await client.from('reports').update({published:!state,updated_at:new Date().toISOString()}).eq('id',id);
+ if(error)return alert('خطا: '+error.message);
+ await loadReportsAdmin();
+}
+async function deleteReport(id){
+ if(!confirm('این گزارش تصویری حذف شود؟'))return;
+ const r=currentReports.find(x=>x.id===id);
+ const {error}=await client.from('reports').delete().eq('id',id);
+ if(error){alert('خطا: '+error.message);return}
+ const oldImages=Array.isArray(r?.image_urls)?r.image_urls:(r?.image_url?[r.image_url]:[]);
+ for(const url of oldImages)await removeMediaUrl(url);
+ if(r?.video_url)await removeMediaUrl(r.video_url);
+ await loadReportsAdmin();
+}
+
 async function loadPosts(){const {data,error}=await client.from('posts').select('*').order('created_at',{ascending:false});if(error){msg($('list'),'خطا در دریافت مطالب: '+esc(error.message),true);return}currentPosts=data||[];render()}
 function render(){if(!currentPosts.length){$('list').innerHTML='<p class="muted">هنوز مطلبی ثبت نشده است.</p>';return}$('list').innerHTML=currentPosts.map(p=>`<div class="item"><div class="row"><span class="pill">${esc(p.category)}</span><span class="pill ${p.published?'on':'off'}">${p.published?'منتشر شده':'مخفی'}</span><span class="muted">${new Date(p.created_at).toLocaleDateString('fa-IR')}</span></div><h3>${esc(p.title)}</h3><p>${esc(p.body).replace(/\n/g,'<br>')}</p>${p.media_url?(p.media_type==='video'?`<video controls src="${esc(p.media_url)}"></video>`:`<img src="${esc(p.media_url)}" alt="">`):''}<div class="row"><button class="btn" onclick="editPost(${p.id})">ویرایش</button><button class="btn secondary" onclick="togglePublish(${p.id},${p.published})">${p.published?'مخفی کردن':'انتشار'}</button><button class="btn danger" onclick="deletePost(${p.id})">حذف</button></div></div>`).join('')}
 function editPost(id){const p=currentPosts.find(x=>x.id===id);if(!p)return;editing=p.id;$('formTitle').textContent='ویرایش اطلاعیه';$('title').value=p.title;$('category').value=p.category;$('body').value=p.body;$('published').checked=p.published;$('oldMedia').innerHTML=p.media_url?`<p class="muted">رسانه فعلی:</p>${p.media_type==='video'?`<video class="preview" controls src="${esc(p.media_url)}"></video>`:`<img class="preview" src="${esc(p.media_url)}">`}`:'';$('cancelBtn').classList.remove('hidden');$('saveBtn').textContent='ذخیره تغییرات';window.scrollTo({top:0,behavior:'smooth'})}
 $('cancelBtn').onclick=resetForm;
 function resetForm(){editing=null;$('formTitle').textContent='افزودن اطلاعیه';$('title').value='';$('body').value='';$('category').value='اطلاعیه';$('media').value='';$('published').checked=true;$('oldMedia').innerHTML='';$('cancelBtn').classList.add('hidden');$('saveBtn').textContent='ثبت اطلاعیه';msg($('formMsg'),'')}
-async function upload(file){if(!file)return null;if(file.size>100*1024*1024)throw new Error('حجم فایل بیشتر از ۱۰۰ مگابایت است.');const ext=(file.name.split('.').pop()||'bin').toLowerCase();const path=`${crypto.randomUUID()}.${ext}`;const {error}=await client.storage.from('media').upload(path,file,{upsert:false,contentType:file.type});if(error)throw error;const {data}=client.storage.from('media').getPublicUrl(path);return {url:data.publicUrl,type:file.type.startsWith('video/')?'video':'image',path}}
+async function upload(file){if(!file)return null;if(file.size>200*1024*1024)throw new Error('حجم فایل بیشتر از ۲۰۰ مگابایت است.');const ext=(file.name.split('.').pop()||'bin').toLowerCase();const path=`${crypto.randomUUID()}.${ext}`;const {error}=await client.storage.from('media').upload(path,file,{upsert:false,contentType:file.type});if(error)throw error;const {data}=client.storage.from('media').getPublicUrl(path);return {url:data.publicUrl,type:file.type.startsWith('video/')?'video':'image',path}}
 $('saveBtn').onclick=async()=>{try{$('saveBtn').disabled=true;msg($('formMsg'),'در حال ذخیره...');const title=$('title').value.trim(),body=$('body').value.trim(),file=$('media').files[0];if(!title||!body)throw new Error('عنوان و متن را وارد کنید.');let payload={title,category:$('category').value,body,published:$('published').checked,updated_at:new Date().toISOString()};if(file){const m=await upload(file);payload.media_url=m.url;payload.media_type=m.type}if(editing){const {error}=await client.from('posts').update(payload).eq('id',editing);if(error)throw error}else{const {error}=await client.from('posts').insert(payload);if(error)throw error}resetForm();await loadPosts();msg($('formMsg'),'با موفقیت ذخیره شد.')}catch(e){msg($('formMsg'),esc(e.message||'خطا در ذخیره'),true)}finally{$('saveBtn').disabled=false}};
 async function togglePublish(id,state){const {error}=await client.from('posts').update({published:!state,updated_at:new Date().toISOString()}).eq('id',id);if(error)return alert('خطا: '+error.message);await loadPosts()}
 async function deletePost(id){if(!confirm('این مطلب حذف شود؟'))return;const p=currentPosts.find(x=>x.id===id);const {error}=await client.from('posts').delete().eq('id',id);if(error){alert('خطا: '+error.message);return}if(p?.media_url){try{const marker='/storage/v1/object/public/media/';const i=p.media_url.indexOf(marker);if(i>=0)await client.storage.from('media').remove([p.media_url.slice(i+marker.length)])}catch(e){}}await loadPosts()}
