@@ -9,6 +9,13 @@
 :root{--bg:#050a10;--panel:#0a1420;--panel2:#0d1b29;--blue:#1789ff;--gold:#d8b85d;--text:#f5f7fa;--muted:#aebbc7;--line:#23384b}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#102d49 0,#050a10 38%);color:var(--text);font-family:Vazirmatn,Tahoma,Arial,sans-serif;line-height:1.8}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:26px 26px}a{text-decoration:none;color:inherit}.nav{position:sticky;top:0;z-index:50;background:#050a10ef;border-bottom:1px solid #24425c;backdrop-filter:blur(15px)}.navin{max-width:1200px;margin:auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid #d7b95e}.brand small{display:block;color:#d8bc67;font-size:10px;font-weight:500}nav{display:flex;gap:18px;color:#d1d9e0;font-size:13px;flex-wrap:wrap}nav a:hover{color:#61b3ff}.hero{padding:18px 18px 0;background:#02070d}.banner{width:100%;max-height:540px;object-fit:cover;display:block;border-radius:0 0 24px 24px;box-shadow:0 20px 55px #000}.heroText{max-width:1050px;margin:auto;text-align:center;padding:42px 20px 55px}.badge{display:inline-block;padding:7px 16px;border:1px solid #527696;border-radius:999px;color:#d9e7f4;background:#0b1b2b}h1{font-size:clamp(30px,5vw,62px);line-height:1.35;margin:17px 0 8px;font-weight:900}.heroText p{color:#b9c7d3;max-width:760px;margin:auto}.btn{display:inline-block;margin-top:23px;background:linear-gradient(135deg,#e4c86b,#b59038);color:#111;padding:11px 23px;border-radius:11px;font-weight:800}section{max-width:1200px;margin:auto;padding:68px 20px}h2{font-size:29px;margin:0 0 7px;font-weight:900}.sub{color:var(--muted);margin:0 0 25px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:0 14px 40px #0005}.card h3{margin:8px 0}.card p{color:#b8c3cc}.schedule{display:grid;grid-template-columns:1fr 1fr;gap:20px}.time{font-size:25px;color:#e1c66c;font-weight:900;margin:12px 0}.tag{display:inline-block;padding:6px 11px;border-radius:8px;background:#12304a;color:#a9d8ff;font-size:12px}.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.post img,.post video{width:100%;max-height:380px;object-fit:cover;border-radius:12px;background:#000;margin-top:12px}.post .date{font-size:11px;color:#8795a1}.empty{border:1px dashed #38516a;border-radius:16px;padding:25px;color:#9aa9b6;text-align:center}.trips{display:grid;grid-template-columns:1fr;gap:20px}.trip{overflow:hidden;padding:0}.tripHead{padding:22px 24px 12px}.trip video{width:100%;display:block;background:#000;max-height:650px}.tripInfo{padding:0 24px 24px;color:#b8c3cc}.media{margin-top:25px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#070d14}.media img{width:100%;height:auto;display:block}.socials{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.social{display:flex;align-items:center;gap:9px;padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:#0a1420;transition:.2s}.social:hover{transform:translateY(-2px);border-color:#507694}.social b{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#fff;color:#111;font-size:12px}.rubika b{background:#8b5cf6;color:#fff}.aparat b{background:#e53935;color:#fff}.rubino b{background:#f59e0b;color:#fff}footer{border-top:1px solid var(--line);padding:34px 20px;text-align:center;color:#8795a1}.adminlink{font-size:11px;color:#526273;margin-top:15px;display:inline-block}.status{padding:12px 15px;border:1px solid var(--line);border-radius:12px;text-align:center;color:#aebbc7;margin-bottom:18px}
 @media(max-width:800px){nav{display:none}.grid,.schedule,.posts{grid-template-columns:1fr}.navin{padding:8px 14px}.brand img{width:44px;height:44px}.hero{padding:8px 8px 0}.banner{border-radius:0 0 15px 15px}section{padding:52px 15px}.social{width:100%;justify-content:center}}
+
+.report-gallery{position:relative;margin:18px auto 0;max-width:760px;overflow:hidden;border-radius:18px;background:#0b1118}
+.report-gallery img{display:block;width:100%;max-height:520px;object-fit:cover}
+.gallery-btn{position:absolute;top:50%;transform:translateY(-50%);border:0;border-radius:50%;width:42px;height:42px;font-size:24px;cursor:pointer;background:rgba(0,0,0,.55);color:#fff}
+.gallery-btn.prev{right:14px}.gallery-btn.next{left:14px}
+.gallery-count{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.6);color:#fff;padding:5px 10px;border-radius:12px;font-size:13px}
+
 </style>
 </head>
 <body>
@@ -58,12 +65,30 @@ async function loadReports(){
    reportsBox.innerHTML='<div class="empty">هنوز گزارش تصویری منتشر نشده است.</div>';
    return;
  }
- reportsBox.innerHTML=data.map(r=>{
-   const image=r.image_url?`<img loading="lazy" src="${esc(r.image_url)}" alt="${esc(r.title)}">`:'';
+ reportsBox.innerHTML=data.map((r,ri)=>{
+   let imgs=Array.isArray(r.image_urls)?r.image_urls:[];
+   if(!imgs.length && r.image_url) imgs=[r.image_url];
+   const gallery=imgs.length?`<div class="report-gallery" data-gallery="${ri}">
+      <img id="galleryImg${ri}" src="${esc(imgs[0])}" alt="${esc(r.title)}">
+      ${imgs.length>1?`<button class="gallery-btn prev" onclick="moveGallery(${ri},-1)">›</button><button class="gallery-btn next" onclick="moveGallery(${ri},1)">‹</button><div class="gallery-count" id="galleryCount${ri}">1 / ${imgs.length}</div>`:''}
+    </div>`:'';
    const video=r.video_url?`<video controls preload="metadata" src="${esc(r.video_url)}"></video>`:'';
    const body=r.body?`<p>${esc(r.body).replace(/\n/g,'<br>')}</p>`:'';
-   return `<article class="card post"><span class="tag">📸 گزارش تصویری</span><h3>${esc(r.title)}</h3><div class="date">${new Date(r.created_at).toLocaleDateString('fa-IR')}</div>${body}${image}${video}</article>`;
+   return `<article class="card post"><span class="tag">📸 گزارش تصویری</span><h3>${esc(r.title)}</h3><div class="date">${new Date(r.created_at).toLocaleDateString('fa-IR')}</div>${body}${gallery}${video}</article>`;
  }).join('');
+ window.reportGalleries=data.map(r=>Array.isArray(r.image_urls)?r.image_urls:(r.image_url?[r.image_url]:[]));
+ window.reportGalleryIndex=data.map(()=>0);
+}
+
+function moveGallery(reportIndex, step){
+ const imgs=window.reportGalleries?.[reportIndex]||[];
+ if(imgs.length<2)return;
+ let i=(window.reportGalleryIndex[reportIndex]+step+imgs.length)%imgs.length;
+ window.reportGalleryIndex[reportIndex]=i;
+ const img=document.getElementById('galleryImg'+reportIndex);
+ const count=document.getElementById('galleryCount'+reportIndex);
+ if(img)img.src=imgs[i];
+ if(count)count.textContent=(i+1)+' / '+imgs.length;
 }
 
 async function loadWeeklyPeople(){
