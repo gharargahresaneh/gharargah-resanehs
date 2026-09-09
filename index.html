@@ -16,23 +16,637 @@
 .gallery-btn.prev{right:14px}.gallery-btn.next{left:14px}
 .gallery-count{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.6);color:#fff;padding:5px 10px;border-radius:12px;font-size:13px}
 
+
+/* ===== Decorative بسیجی / مذهبی visual layer ===== */
+body:after{
+  content:"        ";
+  position:fixed;
+  left:0;right:0;bottom:8px;
+  text-align:center;
+  font-size:15px;
+  letter-spacing:14px;
+  color:#d8b85d;
+  opacity:.10;
+  pointer-events:none;
+  z-index:0;
+}
+.nav,.hero,section,footer{position:relative;z-index:1}
+.nav:after{
+  content:"    ";
+  position:absolute;
+  left:22px;top:50%;
+  transform:translateY(-50%);
+  color:#d8b85d;
+  opacity:.22;
+  font-size:14px;
+  letter-spacing:5px;
+  pointer-events:none;
+}
+.heroText:before{
+  content:"        ";
+  display:block;
+  color:#d8b85d;
+  opacity:.65;
+  font-size:18px;
+  letter-spacing:8px;
+  margin-bottom:8px;
+}
+section h2:before{
+  content:"";
+  color:#d8b85d;
+  margin-left:9px;
+  font-size:20px;
+}
+.card{position:relative;overflow:hidden}
+.card:after{
+  content:"";
+  position:absolute;
+  left:-8px;bottom:-18px;
+  font-size:78px;
+  color:#d8b85d;
+  opacity:.035;
+  pointer-events:none;
+}
+.badge{box-shadow:0 0 0 1px rgba(216,184,93,.08),0 8px 30px rgba(0,0,0,.18)}
+.tag{box-shadow:inset 0 0 0 1px rgba(216,184,93,.08)}
+@media(max-width:800px){.nav:after{display:none}}
+
+
+/* ===== رنگ و نور تزئینی هماهنگ با دیواره‌ها ===== */
+.card{
+  border-color:#29445a;
+}
+.card:before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:18px;
+  left:18px;
+  height:3px;
+  border-radius:0 0 8px 8px;
+  background:linear-gradient(90deg,transparent,#1789ff,#d8b85d,#1789ff,transparent);
+  opacity:.72;
+  box-shadow:0 0 14px rgba(23,137,255,.22);
+}
+.schedule .card:nth-child(2):before{
+  background:linear-gradient(90deg,transparent,#d8b85d,#1789ff,#d8b85d,transparent);
+}
+.post:before{
+  background:linear-gradient(90deg,transparent,#b59038,#1789ff,#b59038,transparent);
+}
+.media,.report-gallery{
+  border-color:#29445a;
+  box-shadow:0 12px 35px rgba(0,0,0,.20), inset 0 0 30px rgba(23,137,255,.035);
+}
+section h2{
+  position:relative;
+  display:inline-block;
+}
+section h2:after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:-7px;
+  width:72%;
+  height:2px;
+  border-radius:10px;
+  background:linear-gradient(90deg,#d8b85d,rgba(216,184,93,0));
+}
+
+
+/* ===== طرح گرافیکی دیواره‌ها ===== */
+body{
+  background:
+    radial-gradient(circle at 15% 20%,rgba(23,137,255,.09),transparent 24%),
+    radial-gradient(circle at 85% 65%,rgba(216,184,93,.07),transparent 25%),
+    linear-gradient(135deg,#050a10 0%,#07131e 48%,#050a10 100%);
+}
+body:before{
+  opacity:.055;
+  background-image:
+    linear-gradient(30deg,rgba(216,184,93,.22) 12%,transparent 12.5%,transparent 87%,rgba(216,184,93,.22) 87.5%,rgba(216,184,93,.22)),
+    linear-gradient(150deg,rgba(23,137,255,.16) 12%,transparent 12.5%,transparent 87%,rgba(23,137,255,.16) 87.5%,rgba(23,137,255,.16));
+  background-size:52px 90px;
+  background-position:0 0,26px 45px;
+}
+.hero{
+  background:
+    radial-gradient(circle at 50% 0,rgba(216,184,93,.10),transparent 35%),
+    linear-gradient(180deg,#02070d,#050a10);
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:18px 18px 0;
+  pointer-events:none;
+  border:1px solid rgba(216,184,93,.16);
+  border-bottom:0;
+  border-radius:0 0 24px 24px;
+}
+section{
+  position:relative;
+}
+section:before{
+  content:"";
+  position:absolute;
+  top:25px;
+  right:20px;
+  width:110px;
+  height:110px;
+  border:1px solid rgba(216,184,93,.07);
+  transform:rotate(45deg);
+  pointer-events:none;
+}
+section:after{
+  content:"    ";
+  position:absolute;
+  left:24px;
+  top:30px;
+  color:#d8b85d;
+  opacity:.12;
+  font-size:17px;
+  letter-spacing:8px;
+  pointer-events:none;
+}
+.card{
+  background:
+    linear-gradient(145deg,rgba(13,27,41,.96),rgba(5,12,19,.98)),
+    repeating-linear-gradient(135deg,transparent 0 18px,rgba(216,184,93,.018) 18px 19px);
+}
+.tag{
+  background:linear-gradient(135deg,#12304a,#0c2235);
+}
+footer{
+  background:
+    radial-gradient(circle at 50% 0,rgba(216,184,93,.07),transparent 38%),
+    #04090e;
+}
+
+
+/* ===== نقش‌های بزرگ و پخش‌شده روی دیواره‌ها ===== */
+body:before{
+  opacity:.13;
+  background-image:
+    radial-gradient(circle at 8% 18%,rgba(216,184,93,.55) 0 2px,transparent 3px),
+    radial-gradient(circle at 92% 30%,rgba(23,137,255,.55) 0 2px,transparent 3px),
+    linear-gradient(30deg,transparent 0 44%,rgba(216,184,93,.16) 44.5% 45%,transparent 45.5% 100%),
+    linear-gradient(150deg,transparent 0 44%,rgba(23,137,255,.12) 44.5% 45%,transparent 45.5% 100%);
+  background-size:180px 180px,220px 220px,140px 140px,140px 140px;
+}
+section:before{
+  width:190px;
+  height:190px;
+  border:3px solid rgba(216,184,93,.13);
+  box-shadow:0 0 0 18px rgba(23,137,255,.025),0 0 0 38px rgba(216,184,93,.018);
+}
+section:after{
+  content:"            ";
+  font-size:28px;
+  letter-spacing:13px;
+  opacity:.22;
+}
+.heroText:before{
+  content:"                    ";
+  font-size:30px;
+  letter-spacing:14px;
+  opacity:.82;
+}
+.card:after{
+  content:"";
+  font-size:150px;
+  left:-28px;
+  bottom:-48px;
+  opacity:.055;
+}
+.nav:after{
+  content:"        ";
+  font-size:20px;
+  letter-spacing:7px;
+  opacity:.3;
+}
+@media(max-width:800px){
+  section:before{width:120px;height:120px}
+  section:after{font-size:20px;letter-spacing:7px}
+  .heroText:before{font-size:23px;letter-spacing:8px}
+}
+
+
+/* ===== نقش مرکزی بزرگ: مسجد + نماد دفاعی انتزاعی ===== */
+.heroText,.card,section{position:relative;overflow:hidden}
+.heroText:after{
+  content:"            ";
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:min(92%,900px);
+  text-align:center;
+  font-size:clamp(54px,9vw,120px);
+  line-height:1;
+  letter-spacing:clamp(8px,2vw,24px);
+  opacity:.12;
+  filter:drop-shadow(0 0 16px rgba(216,184,93,.35));
+  pointer-events:none;
+  z-index:0;
+}
+.heroText>*{position:relative;z-index:2}
+section:after{
+  content:"                  ";
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:100%;
+  text-align:center;
+  font-size:clamp(45px,8vw,105px);
+  letter-spacing:clamp(5px,1.5vw,18px);
+  opacity:.09;
+  pointer-events:none;
+  white-space:nowrap;
+}
+section>*{position:relative;z-index:2}
+.card:before{
+  content:"          ";
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  font-size:clamp(42px,6vw,82px);
+  letter-spacing:14px;
+  opacity:.065;
+  white-space:nowrap;
+  pointer-events:none;
+}
+/* نماد دفاعی انتزاعی، بدون نمایش جزئیات واقعی سلاح */
+.card:after{
+  content:"╲╱      ╲╱";
+  position:absolute;
+  left:50%;bottom:-8px;
+  transform:translateX(-50%);
+  font-size:clamp(40px,5vw,70px);
+  letter-spacing:10px;
+  color:#d8b85d;
+  opacity:.08;
+  pointer-events:none;
+}
+@media(max-width:800px){
+  .heroText:after{font-size:58px;letter-spacing:7px}
+  section:after{font-size:48px;letter-spacing:5px}
+  .card:before{font-size:40px;letter-spacing:6px}
+}
+
+
+/* ===== Professional redesign v2 ===== */
+:root{
+  --bg:#03070b;--panel:#0a1119;--panel2:#0e1924;--blue:#35a7ff;--blue2:#1169b8;
+  --gold:#e0bd62;--gold2:#9e7a2f;--text:#f7fafc;--muted:#9eafbd;--line:#1e3447;
+  --glass:rgba(8,16,25,.78)
+}
+body{background:
+  radial-gradient(900px 420px at 50% -80px,rgba(34,127,205,.20),transparent 65%),
+  radial-gradient(700px 500px at 100% 55%,rgba(224,189,98,.055),transparent 70%),
+  linear-gradient(180deg,#03070b 0%,#07111a 48%,#03070b 100%);}
+body:before{opacity:.035;background-size:34px 34px}
+.nav{background:rgba(3,7,11,.82);border-bottom:1px solid rgba(53,167,255,.20);box-shadow:0 8px 35px rgba(0,0,0,.28)}
+.navin{max-width:1280px;padding:9px 24px}
+.brand{gap:13px;font-size:15px}.brand img{width:55px;height:55px;border:2px solid rgba(224,189,98,.85);box-shadow:0 0 0 4px rgba(224,189,98,.06),0 8px 25px rgba(0,0,0,.35)}
+.brand small{font-size:10px;color:#b8cbe0;margin-top:2px}
+nav{gap:6px;font-size:13px}nav a{padding:8px 11px;border-radius:10px;transition:.22s;color:#cbd7e1}nav a:hover{color:#fff;background:rgba(53,167,255,.10);box-shadow:inset 0 0 0 1px rgba(53,167,255,.14)}
+.hero{padding:14px 14px 0;background:linear-gradient(180deg,#02060a,#07111a)}
+.banner{max-width:1400px;margin:auto;max-height:610px;border-radius:20px;box-shadow:0 28px 80px rgba(0,0,0,.62),0 0 0 1px rgba(224,189,98,.14);object-position:center}
+.heroText{max-width:1050px;padding:48px 20px 62px}
+.heroText:before{font-size:22px;letter-spacing:10px;color:#e0bd62;text-shadow:0 0 22px rgba(224,189,98,.35)}
+.badge{background:linear-gradient(135deg,rgba(17,52,78,.85),rgba(10,20,31,.85));border-color:rgba(224,189,98,.35);box-shadow:0 10px 35px rgba(0,0,0,.22),inset 0 0 20px rgba(53,167,255,.04)}
+h1{letter-spacing:-1px;text-shadow:0 8px 35px rgba(0,0,0,.55)}
+.heroText p{font-size:15px;max-width:780px;color:#b9c9d7}
+.btn{position:relative;overflow:hidden;background:linear-gradient(135deg,#efd47a,#b28b37);padding:12px 27px;border-radius:12px;box-shadow:0 12px 30px rgba(178,139,55,.18);transition:.22s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(178,139,55,.28)}
+.btn:after{content:"";position:absolute;inset:0;transform:translateX(-110%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transition:.55s}.btn:hover:after{transform:translateX(110%)}
+section{max-width:1280px;padding:82px 24px;scroll-margin-top:80px}
+section h2{font-size:31px;letter-spacing:-.4px}section h2:before{font-size:17px;color:var(--gold)}
+section h2:after{height:3px;width:95%;background:linear-gradient(90deg,var(--gold),rgba(224,189,98,0));box-shadow:0 0 14px rgba(224,189,98,.12)}
+.sub{font-size:14px;color:#8fa2b1;margin-bottom:30px}
+.grid,.posts{gap:22px}.card{border-radius:20px;border-color:rgba(53,167,255,.15);background:linear-gradient(145deg,rgba(14,25,36,.94),rgba(5,11,17,.98));box-shadow:0 18px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.018);transition:transform .22s,border-color .22s,box-shadow .22s}
+.card:hover{transform:translateY(-3px);border-color:rgba(53,167,255,.30);box-shadow:0 24px 65px rgba(0,0,0,.36),0 0 30px rgba(53,167,255,.045)}
+.card:before{height:2px;right:24px;left:24px;background:linear-gradient(90deg,transparent,var(--blue),var(--gold),var(--blue),transparent);opacity:.8}
+.card h3{font-size:19px}.card p{font-size:14px;line-height:2;color:#afbdc8}
+.tag{border:1px solid rgba(53,167,255,.16);background:linear-gradient(135deg,#102c43,#0a1a29);color:#b8ddfa;font-weight:700}
+.time{font-size:27px;text-shadow:0 0 20px rgba(224,189,98,.10)}
+.schedule{gap:22px}.media,.report-gallery{border-color:rgba(53,167,255,.18);border-radius:20px}
+.post img,.post video{border-radius:15px}.post .date{color:#718594}
+.empty,.status{background:rgba(7,14,21,.55);border-color:#29475f;color:#9eafbd}
+.trip video{border-top:1px solid rgba(53,167,255,.12)}
+.social{border-color:rgba(53,167,255,.16);background:rgba(9,18,27,.82);box-shadow:0 10px 28px rgba(0,0,0,.20);transition:.22s}.social:hover{border-color:rgba(224,189,98,.38);box-shadow:0 14px 35px rgba(0,0,0,.28);transform:translateY(-3px)}
+footer{background:linear-gradient(180deg,#040a10,#020508);border-top-color:rgba(53,167,255,.18);padding:46px 20px}.adminlink{padding:7px 10px;border-radius:8px}.adminlink:hover{color:#d7e8f7;background:rgba(53,167,255,.08)}
+.hero:after{border-color:rgba(224,189,98,.11)}
+/* subtle side ornaments */
+section:before{width:150px;height:150px;border-color:rgba(53,167,255,.06);box-shadow:0 0 0 22px rgba(53,167,255,.018),0 0 0 44px rgba(224,189,98,.012)}
+section:after{font-size:20px;opacity:.10}
+/* visual section separators */
+section:not(:last-child):after{filter:drop-shadow(0 0 8px rgba(224,189,98,.12))}
+@media(max-width:800px){
+  .navin{padding:8px 12px}.brand img{width:46px;height:46px}.brand{font-size:13px}
+  section{padding:62px 15px}.hero{padding:8px 8px 0}.banner{border-radius:15px}
+  .heroText{padding:38px 15px 50px}.heroText:before{font-size:17px;letter-spacing:6px}
+  h1{font-size:31px}.heroText p{font-size:13px}
+  .card{border-radius:17px}.card:hover{transform:none}
+}
+
+
+/* ===== ULTRA PRO EXPERIENCE ===== */
+:root{--cyan:#53b9ff;--gold2:#f1d37a;--glass:rgba(10,20,32,.72)}
+body{overflow-x:hidden;background:radial-gradient(900px 500px at 50% -80px,rgba(23,137,255,.20),transparent 65%),radial-gradient(700px 500px at 100% 35%,rgba(216,184,93,.07),transparent 70%),#050a10}
+body:before{opacity:.055;background-size:32px 32px}
+.nav{box-shadow:0 10px 35px rgba(0,0,0,.28)}
+.navin{min-height:74px}
+.brand{letter-spacing:-.2px}.brand img{box-shadow:0 0 0 4px rgba(216,184,93,.07),0 8px 28px rgba(0,0,0,.35)}
+nav a{position:relative;padding:8px 2px;transition:.25s}nav a:after{content:"";position:absolute;right:0;left:0;bottom:0;height:2px;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--gold));transform:scaleX(0);transition:.25s}nav a:hover:after{transform:scaleX(1)}
+.hero{position:relative;isolation:isolate;background:linear-gradient(180deg,#02070d 0%,#071321 100%)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,7,13,.8),transparent 42%,rgba(2,7,13,.55)),linear-gradient(0deg,rgba(2,7,13,.92),transparent 48%);z-index:1;pointer-events:none}
+.banner{position:relative;z-index:0;filter:saturate(1.08) contrast(1.05);min-height:320px}
+.heroText{position:relative;z-index:2;margin-top:-5px}
+.heroText:after{content:"";display:block;width:min(520px,70%);height:1px;margin:28px auto 0;background:linear-gradient(90deg,transparent,var(--gold2),var(--blue),transparent);opacity:.7}
+h1{letter-spacing:-1.5px;text-shadow:0 8px 40px #000}
+.heroText p{font-size:16px}
+.btn{position:relative;overflow:hidden;box-shadow:0 10px 35px rgba(216,184,93,.16);transition:.25s}.btn:hover{transform:translateY(-3px);box-shadow:0 15px 45px rgba(216,184,93,.24)}
+section{position:relative}section:before{content:"";position:absolute;inset:18px 20px;border-radius:30px;background:linear-gradient(135deg,rgba(23,137,255,.035),rgba(216,184,93,.018));border:1px solid rgba(110,150,180,.045);pointer-events:none}
+section>*{position:relative}
+section h2{display:flex;align-items:center;gap:9px}section h2:before{margin:0!important;width:12px;height:12px;border-radius:3px;background:linear-gradient(135deg,var(--gold),var(--blue));box-shadow:0 0 18px rgba(23,137,255,.3);font-size:0}
+.card{background:linear-gradient(145deg,rgba(15,31,46,.92),rgba(6,14,23,.94));backdrop-filter:blur(10px);border-color:rgba(72,108,136,.5);transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}.card:hover{transform:translateY(-6px);border-color:rgba(83,185,255,.55);box-shadow:0 22px 60px rgba(0,0,0,.34),0 0 0 1px rgba(83,185,255,.05)}
+.card:before{height:3px!important;background:linear-gradient(90deg,var(--blue),var(--gold),transparent)!important;opacity:.8!important}
+.tag{border:1px solid rgba(83,185,255,.18);background:linear-gradient(135deg,#12304a,#0b1b2b);color:#c8e8ff}
+.time{text-shadow:0 0 22px rgba(216,184,93,.16)}
+.posts .post,.grid .card,.schedule .card{min-height:190px}
+.post img,.post video,.trip video{box-shadow:0 10px 35px rgba(0,0,0,.28)}
+.report-gallery{border:1px solid rgba(83,185,255,.18);box-shadow:0 15px 45px rgba(0,0,0,.22)}
+.social{transition:.25s;background:rgba(10,20,32,.82)}.social:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.25);border-color:#527d9d}
+footer{background:linear-gradient(180deg,transparent,rgba(2,7,13,.55))}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}
+#scrollProgress{position:fixed;top:0;right:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue),var(--gold));z-index:9999;box-shadow:0 0 12px rgba(83,185,255,.55)}
+#backTop{position:fixed;left:18px;bottom:18px;width:44px;height:44px;border:1px solid rgba(83,185,255,.3);border-radius:50%;background:rgba(5,10,16,.82);color:#fff;cursor:pointer;z-index:80;opacity:0;pointer-events:none;transition:.25s;backdrop-filter:blur(10px)}#backTop.show{opacity:1;pointer-events:auto}#backTop:hover{transform:translateY(-3px);border-color:var(--gold)}
+@media(max-width:800px){section:before{inset:12px 8px}.banner{min-height:220px}.heroText{padding-top:32px}.heroText p{font-size:14px}.card:hover{transform:none}}
+
 </style>
+
+<style id="legend-premium">
+:root{
+  --bg:#07111f;
+  --panel:rgba(14,27,45,.78);
+  --panel2:rgba(18,35,57,.88);
+  --line:rgba(130,170,210,.20);
+  --gold:#d7b45a;
+  --gold2:#f0d58a;
+  --blue:#3e8edb;
+  --text:#eef5ff;
+  --muted:#9fb2c8;
+}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(62,142,219,.18),transparent 30%),
+    radial-gradient(circle at 90% 15%,rgba(215,180,90,.12),transparent 28%),
+    linear-gradient(135deg,#050c16 0%,#071525 45%,#08111d 100%);
+  color:var(--text);
+}
+body:after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    linear-gradient(115deg,transparent 0 48%,rgba(255,255,255,.018) 49%,transparent 50%),
+    linear-gradient(65deg,transparent 0 48%,rgba(62,142,219,.018) 49%,transparent 50%);
+  background-size:180px 180px;
+}
+header,.nav,.topbar{
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.card{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,rgba(20,39,63,.92),rgba(8,19,33,.88));
+  border:1px solid var(--line);
+  box-shadow:0 20px 60px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04);
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+}
+.card:before{
+  content:"";
+  position:absolute;left:0;right:0;top:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),var(--blue),transparent);
+  opacity:.8;
+}
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(215,180,90,.38);
+  box-shadow:0 28px 80px rgba(0,0,0,.36),0 0 35px rgba(62,142,219,.08);
+}
+button,a.btn,.button{
+  border:1px solid rgba(215,180,90,.38)!important;
+  background:linear-gradient(135deg,rgba(215,180,90,.20),rgba(62,142,219,.15))!important;
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
+  transition:all .25s ease;
+}
+button:hover,a.btn:hover,.button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(0,0,0,.3),0 0 22px rgba(215,180,90,.12);
+}
+img,video{
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 15px 45px rgba(0,0,0,.28);
+}
+h1,h2,h3{
+  letter-spacing:.02em;
+  text-shadow:0 2px 20px rgba(0,0,0,.35);
+}
+h2:after,h3:after{
+  content:"";
+  display:block;
+  width:70px;height:2px;margin-top:10px;
+  background:linear-gradient(90deg,var(--gold),var(--blue),transparent);
+}
+.tag,.badge{
+  border:1px solid rgba(215,180,90,.28)!important;
+  background:rgba(215,180,90,.08)!important;
+}
+input,textarea,select{
+  background:rgba(4,13,24,.72)!important;
+  border:1px solid rgba(130,170,210,.22)!important;
+  color:var(--text)!important;
+  border-radius:12px!important;
+  outline:none;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:rgba(215,180,90,.55)!important;
+  box-shadow:0 0 0 3px rgba(215,180,90,.08)!important;
+}
+section{
+  position:relative;
+}
+section:before{
+  content:"";
+  position:absolute;left:50%;top:-1px;
+  transform:translateX(-50%);
+  width:min(92%,900px);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(215,180,90,.35),rgba(62,142,219,.35),transparent);
+  pointer-events:none;
+}
+.hero,.heroText{
+  position:relative;
+}
+.hero:after,.heroText:after{
+  content:"";
+  position:absolute;inset:auto 10% -35px;
+  height:90px;
+  background:radial-gradient(ellipse,rgba(62,142,219,.16),transparent 70%);
+  filter:blur(18px);pointer-events:none;
+}
+footer{
+  border-top:1px solid rgba(130,170,210,.16);
+  background:rgba(3,9,16,.55);
+}
+@media(max-width:700px){
+  .card:hover{transform:translateY(-3px)}
+}
+</style>
+
+
+<style id="level-100">
+/* ===== LEVEL 100 / PREMIUM UI ===== */
+:root{
+  --l100-bg:#050a12;
+  --l100-surface:rgba(10,20,34,.82);
+  --l100-surface2:rgba(15,29,48,.92);
+  --l100-border:rgba(157,184,214,.18);
+  --l100-blue:#4da3ff;
+  --l100-gold:#d9b75f;
+  --l100-white:#f5f8fc;
+  --l100-muted:#91a5bb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(900px 500px at 5% -5%,rgba(77,163,255,.16),transparent 65%),
+    radial-gradient(800px 500px at 100% 10%,rgba(217,183,95,.11),transparent 65%),
+    linear-gradient(145deg,#03070d,#071321 48%,#040a12);
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  opacity:.32;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+body:after{
+  content:"";position:fixed;width:420px;height:420px;left:-180px;top:20%;
+  border-radius:50%;pointer-events:none;z-index:-1;
+  background:rgba(77,163,255,.07);filter:blur(80px);
+  animation:l100float 12s ease-in-out infinite alternate;
+}
+@keyframes l100float{to{transform:translate(90vw,35vh)}}
+
+header,.nav,.topbar{
+  background:rgba(4,11,20,.70)!important;
+  backdrop-filter:blur(22px) saturate(140%);
+  -webkit-backdrop-filter:blur(22px) saturate(140%);
+  border-bottom:1px solid rgba(157,184,214,.14);
+  box-shadow:0 12px 45px rgba(0,0,0,.18);
+}
+.hero,.heroText{
+  isolation:isolate;
+}
+.hero:before,.heroText:before{
+  content:"";position:absolute;inset:12% 8%;z-index:-1;
+  border-radius:40px;
+  background:linear-gradient(120deg,rgba(77,163,255,.10),rgba(217,183,95,.06),transparent 70%);
+  border:1px solid rgba(157,184,214,.08);
+  box-shadow:inset 0 0 80px rgba(77,163,255,.04);
+}
+h1{
+  font-size:clamp(2.2rem,5vw,4.8rem)!important;
+  line-height:1.02!important;
+  letter-spacing:-.045em!important;
+  background:linear-gradient(105deg,#fff 15%,#d9e9fa 48%,#d9b75f 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent!important;
+}
+h2,h3{letter-spacing:-.018em}
+section{position:relative}
+section:after{
+  content:"";position:absolute;left:50%;bottom:-1px;
+  width:min(78%,720px);height:1px;transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(77,163,255,.28),rgba(217,183,95,.28),transparent);
+}
+.card{
+  background:linear-gradient(145deg,rgba(18,35,56,.84),rgba(5,13,23,.91))!important;
+  border:1px solid var(--l100-border)!important;
+  border-radius:20px!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.045)!important;
+  overflow:hidden;
+  transition:transform .32s cubic-bezier(.2,.8,.2,1),border-color .32s,box-shadow .32s;
+}
+.card:before{
+  height:2px!important;
+  background:linear-gradient(90deg,transparent,#4da3ff,#d9b75f,transparent)!important;
+}
+.card:hover{
+  transform:translateY(-8px) scale(1.008);
+  border-color:rgba(77,163,255,.34)!important;
+  box-shadow:0 30px 90px rgba(0,0,0,.38),0 0 35px rgba(77,163,255,.07)!important;
+}
+.card img,.card video{
+  transition:transform .45s ease,filter .45s ease;
+}
+.card:hover img,.card:hover video{
+  transform:scale(1.025);
+  filter:saturate(1.06) contrast(1.03);
+}
+button,a.btn,.button{
+  position:relative;overflow:hidden;
+  border-radius:12px!important;
+  background:linear-gradient(135deg,rgba(77,163,255,.18),rgba(217,183,95,.14))!important;
+  border:1px solid rgba(157,184,214,.22)!important;
+  color:#fff!important;
+}
+button:after,a.btn:after,.button:after{
+  content:"";position:absolute;top:0;left:-120%;width:70%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);
+  transform:skewX(-20deg);transition:left .55s ease;
+}
+button:hover:after,a.btn:hover:after,.button:hover:after{left:150%}
+.tag,.badge{
+  letter-spacing:.04em;
+  border-color:rgba(217,183,95,.28)!important;
+  background:rgba(217,183,95,.07)!important;
+}
+input,textarea,select{
+  box-shadow:inset 0 1px 12px rgba(0,0,0,.18)!important;
+}
+footer{
+  background:linear-gradient(180deg,rgba(4,10,17,.55),rgba(2,6,11,.95))!important;
+}
+@media(max-width:700px){
+  .hero:before,.heroText:before{inset:5% 2%}
+  .card:hover{transform:translateY(-4px)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+
 </head>
-<body>
+<body><div id="scrollProgress"></div><button id="backTop" aria-label="بازگشت به بالا">↑</button>
 <header class="nav"><div class="navin"><a class="brand" href="#home"><img src="assets/logo.jpg" alt="لوگوی قرارگاه رسانه‌ای"><span>قرارگاه رسانه‌ای<small>پایگاه بسیج شهدای آخوندی</small></span></a><nav><a href="#home">خانه</a><a href="#news">اخبار و اطلاعیه‌ها</a><a href="#weekly">برنامه هفتگی</a><a href="#trips">اردوهای اخیر</a><a href="#reports">گزارش‌های تصویری</a><a href="#about">درباره ما</a></nav></div></header>
-<main id="home"><div class="hero"><img class="banner" src="assets/banner.png" alt="بنر قرارگاه رسانه‌ای"><div class="heroText"><div class="badge">﷽ پایگاه بسیج شهدای آخوندی</div><h1>قرارگاه رسانه‌ای پایگاه بسیج شهدای آخوندی</h1><p>مرجع انتشار اخبار، اطلاعیه‌ها، برنامه‌ها، اردوها و گزارش‌های تصویری فعالیت‌های پایگاه.</p><a class="btn" href="#news">مشاهده آخرین اطلاعیه‌ها</a></div></div>
+<main id="home"><div class="hero"><img class="banner" src="assets/banner.png" alt="بنر قرارگاه رسانه‌ای" fetchpriority="high"><div class="heroText"><div class="badge">﷽ پایگاه بسیج شهدای آخوندی</div><h1>قرارگاه رسانه‌ای پایگاه بسیج شهدای آخوندی</h1><p>مرجع انتشار اخبار، اطلاعیه‌ها، برنامه‌ها، اردوها و گزارش‌های تصویری فعالیت‌های پایگاه.</p><a class="btn" href="#news" aria-label="مشاهده آخرین اطلاعیه‌ها">مشاهده آخرین اطلاعیه‌ها</a></div></div>
 <section id="news"><h2>آخرین اخبار و اطلاعیه‌ها</h2><p class="sub">اخبار و اطلاعیه‌های منتشرشده توسط مدیریت سایت</p><div id="posts" class="posts"><div class="status">در حال دریافت مطالب...</div></div></section>
 
 <section id="weekly"><h2>برنامه‌های هفتگی</h2><p class="sub">برنامه‌های ثابت هفتگی پایگاه</p>
 <div class="schedule">
-<div class="card"><span class="tag">⚽ سانس سالن</span><h3>سانس سالن ورزشی هفتگی</h3><div class="time">جمعه‌ها | ۱۱:۰۰ تا ۱۲:۳۰</div><p>سانس هفتگی سالن ورزشی پایگاه.</p></div>
-<div class="card"><span class="tag">📿 حلقه صالحین</span><h3>حلقه صالحین</h3><div class="time">پنجشنبه‌ها | ساعت ۱۷:۰۰</div><p>برگزاری حلقه صالحین در روزهای پنجشنبه، ساعت ۵ عصر.</p></div>
+<div class="card"><span class="tag"> سانس سالن</span><h3>سانس سالن ورزشی هفتگی</h3><div class="time">جمعه‌ها | ۱۱:۰۰ تا ۱۲:۳۰</div><p>سانس هفتگی سالن ورزشی پایگاه.</p></div>
+<div class="card"><span class="tag"> حلقه صالحین</span><h3>حلقه صالحین</h3><div class="time">پنجشنبه‌ها | ساعت ۱۷:۰۰</div><p>برگزاری حلقه صالحین در روزهای پنجشنبه، ساعت ۵ عصر.</p></div>
 </div>
-<div class="card" style="margin-top:20px"><span class="tag">👥 شرکت در سانس</span><h3></h3>ا>افرادی که در حلقه های صالحین حضور داشته اند و می توانند در سانس سالن پایگاه شرکت کنند
-</h3><p id="weeklyPeople">در حال دریافت اطلاعات...</p></div>
+<div class="card" style="margin-top:20px"><span class="tag"> شرکت در سانس</span><h3>افرادی که در حلقه های صالحین حضور داشته اند و می توانند در سانس سالن پایگاه شرکت کنند</h3><p id="weeklyPeople">در حال دریافت اطلاعات...</p></div>
 </section>
 
-<section id="trips"><h2>اردوهای اخیر</h2><p class="sub">گزارش تصویری برنامه‌ها و اردوهای پایگاه</p><div class="trips"><article class="card trip"><div class="tripHead"><span class="tag">🕌 اردوی زیارتی</span><h3>اردوی قم و جمکران</h3></div><video controls preload="metadata" poster="assets/banner.png"><source src="assets/qom-jamkaran.mp4" type="video/mp4">مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.</video><div class="tripInfo">گزارش ویدئویی اردوی قم و جمکران</div></article></div></section>
+<section id="trips"><h2>اردوهای اخیر</h2><p class="sub">گزارش تصویری برنامه‌ها و اردوهای پایگاه</p><div class="trips"><article class="card trip"><div class="tripHead"><span class="tag"> اردوی زیارتی</span><h3>اردوی قم و جمکران</h3></div><video controls preload="metadata" poster="assets/banner.png"><source src="assets/qom-jamkaran.mp4" type="video/mp4">مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.</video><div class="tripInfo">گزارش ویدئویی اردوی قم و جمکران</div></article></div></section>
 <section id="reports"><h2>گزارش‌های تصویری</h2><p class="sub">موضوع و گزارش تصویری فعالیت‌های پایگاه</p><div id="reportsList" class="posts"><div class="status">در حال دریافت گزارش‌ها...</div></div></section>
 <section id="about"><h2>درباره قرارگاه رسانه‌ای</h2><div class="card"><p>قرارگاه رسانه‌ای پایگاه بسیج شهدای آخوندی با هدف پوشش و انتشار فعالیت‌ها، اخبار، برنامه‌ها، اردوها و گزارش‌های تصویری پایگاه ایجاد شده است.</p></div></section></main>
 <footer><div>ارتباط و دنبال‌کردن قرارگاه رسانه‌ای</div><div class="socials"><a class="social rubika" href="https://web.rubika.ir/#c=c0EAgAJ0bc03c4e4138bbba3cc21c987" target="_blank" rel="noopener"><b>ر</b><span>روبیکا</span></a><a class="social aparat" href="https://www.aparat.com/gharargah_resanehyi" target="_blank" rel="noopener"><b>آپ</b><span>آپارات</span></a><a class="social rubino" href="https://rubika.ir/page/gharargah_resanehyi" target="_blank" rel="noopener"><b>رو</b><span>روبینو</span></a></div><div>© قرارگاه رسانه‌ای پایگاه بسیج شهدای آخوندی</div><a class="adminlink" href="admin.html">ورود به پنل مدیریت</a></footer>
@@ -75,7 +689,7 @@ async function loadReports(){
     </div>`:'';
    const video=r.video_url?`<video controls preload="metadata" src="${esc(r.video_url)}"></video>`:'';
    const body=r.body?`<p>${esc(r.body).replace(/\n/g,'<br>')}</p>`:'';
-   return `<article class="card post"><span class="tag">📸 گزارش تصویری</span><h3>${esc(r.title)}</h3><div class="date">${new Date(r.created_at).toLocaleDateString('fa-IR')}</div>${body}${gallery}${video}</article>`;
+   return `<article class="card post"><span class="tag"> گزارش تصویری</span><h3>${esc(r.title)}</h3><div class="date">${new Date(r.created_at).toLocaleDateString('fa-IR')}</div>${body}${gallery}${video}</article>`;
  }).join('');
  window.reportGalleries=data.map(r=>Array.isArray(r.image_urls)?r.image_urls:(r.image_url?[r.image_url]:[]));
  window.reportGalleryIndex=data.map(()=>0);
@@ -102,4 +716,39 @@ async function loadWeeklyPeople(){
 loadPosts();
 loadReports();
 loadWeeklyPeople();
-</script></body></html>
+</script>
+<script>
+(()=>{
+ const progress=document.getElementById('scrollProgress'), topBtn=document.getElementById('backTop');
+ const refresh=()=>{const h=document.documentElement.scrollHeight-innerHeight; progress.style.width=(h>0?(scrollY/h)*100:0)+'%'; topBtn.classList.toggle('show',scrollY>500)};
+ addEventListener('scroll',refresh,{passive:true}); refresh();
+ topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+ const els=document.querySelectorAll('section,.card,.trip,.socials'); els.forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=Math.min(i*35,280)+'ms'});
+ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.08});els.forEach(e=>io.observe(e))}else els.forEach(e=>e.classList.add('show'));
+})();
+</script>
+
+<script id="level-100-motion">
+document.addEventListener("DOMContentLoaded",()=>{
+  const els=[...document.querySelectorAll("section,.card")];
+  els.forEach(el=>{
+    el.style.opacity="0";
+    el.style.transform="translateY(18px)";
+    el.style.transition="opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1)";
+  });
+  if("IntersectionObserver" in window){
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.style.opacity="1";
+          e.target.style.transform="translateY(0)";
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.08});
+    els.forEach(e=>io.observe(e));
+  }else els.forEach(e=>{e.style.opacity="1";e.style.transform="none"});
+});
+</script>
+
+</body></html>
